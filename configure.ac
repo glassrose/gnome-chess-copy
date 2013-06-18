@@ -60,7 +60,7 @@ if test "x$networking" = "xyes"; then
     AC_SUBST([FOLKS_CFLAGS])
     AC_SUBST([FOLKS_LIBS])
 
-    PKG_CHECK_MODULES([GEE], [gee-1.0])
+    PKG_CHECK_MODULES([GEE], [gee-0.8])
     AC_SUBST([GEE_CFLAGS])
     AC_SUBST([GEE_LIBS])
 
