@@ -52,7 +52,7 @@ AC_ARG_ENABLE([networking],
 
 if test "x$networking" = "xyes"; then
     # Check for folks
-    FOLKS_REQUIRED=0.6.6
+    FOLKS_REQUIRED=0.9.0
 
     PKG_CHECK_MODULES([FOLKS],
         [folks >= $FOLKS_REQUIRED
