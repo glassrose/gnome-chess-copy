@@ -119,20 +119,6 @@ public class HandlerApplication : Application
         }
 
         settings_common.changed.connect (settings_changed_cb);
-
-        create_handler_window ();
-        /* Associate the window to this application */
-        handler_window.application = this;
-
-        if (settings.get_boolean ("network-window-fullscreen"))
-            handler_window.fullscreen ();
-        else if (settings.get_boolean ("network-window-maximized"))
-            handler_window.maximize ();
-
-        handler_window.resize (settings.get_int ("network-window-width"),
-            settings.get_int ("network-window-height"));
-
-        handler_window.show_all ();
     }
 
     private bool change_view (Gtk.TreeModel model, Gtk.TreePath path, Gtk.TreeIter channel_iter)
@@ -1043,8 +1029,22 @@ public class HandlerApplication : Application
           is_activated = true;
       }
 
-      /* Handler window has been created by constructor already. Show it. */
+      /* Create and present Handler window */
+
+      create_handler_window ();
+      /* Associate the window to this application */
+      handler_window.application = this;
+
+      if (settings.get_boolean ("network-window-fullscreen"))
+          handler_window.fullscreen ();
+      else if (settings.get_boolean ("network-window-maximized"))
+          handler_window.maximize ();
+
+      handler_window.resize (settings.get_int ("network-window-width"),
+          settings.get_int ("network-window-height"));
+
       handler_window.show_all ();
+
       handler_window.present ();
     }
 
